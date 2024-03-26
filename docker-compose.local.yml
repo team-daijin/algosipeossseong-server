@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: algosipeosseong.local.mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: daijin
+      MYSQL_DATABASE: algosipeosseong
+      MYSQL_PASSWORD: daijin
+
+  redis:
+    image: redis:7.0-alpine
+    container_name: algosipeosseong.local.redis
+    command: /bin/sh -c "redis-server --requirepass daijin"
+    ports:
+      - "6379:6379"

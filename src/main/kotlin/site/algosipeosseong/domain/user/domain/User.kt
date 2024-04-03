@@ -8,16 +8,26 @@ import site.algosipeosseong.domain.user.domain.value.Privacy
 @Entity
 data class User(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long,
+    val id: Long? = null,
+
+    val accountId: String,
 
     val email: String,
 
     @Embedded
-    val password: Password,
+    var password: Password,
 
     @Embedded
-    val privacy: Privacy,
+    var privacy: Privacy? = null,
 
     @Enumerated(EnumType.STRING)
     val role: Role
-)
+) {
+    fun updatePassword(password: Password) {
+        this.password = password
+    }
+
+    fun updatePrivacy(privacy: Privacy) {
+        this.privacy = privacy
+    }
+}

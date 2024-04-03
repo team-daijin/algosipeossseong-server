@@ -4,6 +4,13 @@ import jakarta.persistence.Embeddable
 import java.io.Serializable
 
 @Embeddable
-data class Password(
+data class Password (
     val value: String
-) : Serializable
+) : Serializable {
+    companion object {
+        fun of(value: String): Password {
+            return Password(value)
+        }
+    }
+
+}

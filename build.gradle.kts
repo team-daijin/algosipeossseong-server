@@ -21,6 +21,7 @@ dependencies {
     implementation(libs.connector.mysql)
     implementation(libs.redis)
     implementation(libs.bundles.jackson)
+    implementation(libs.spring.aws)
     testImplementation(libs.bundles.test)
 }
 

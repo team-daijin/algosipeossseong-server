@@ -7,11 +7,11 @@ class AwsProperties (
     val s3 : S3,
     val credentials : Credentials
 ) {
-    inner class S3 (
+    class S3 (
         val bucket: String
     )
 
-    inner class Credentials (
+    class Credentials (
         val accessKey: String,
         val secretKey: String
     )

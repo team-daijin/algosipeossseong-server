@@ -1,9 +1,10 @@
 package site.algosipeosseong.domain.card.domain
 
 import jakarta.persistence.*
+import site.algosipeosseong.domain.card.domain.constant.Category
 import site.algosipeosseong.domain.expert.domain.Expert
-import site.algosipeosseong.domain.user.domain.User
 import site.algosipeosseong.global.entity.BaseTimeEntity
+import java.time.LocalDateTime
 
 @Entity
 data class Card(
@@ -14,14 +15,13 @@ data class Card(
 
     val title: String,
 
+    @Lob
     val content: String,
 
-    val category: String,
-
-    @ElementCollection(fetch = FetchType.LAZY)
-    val images: List<String>,
+    @Enumerated(value = EnumType.STRING)
+    val category: Category,
 
     @ManyToOne
     @JoinColumn(name = "expert_id")
-    val expert: Expert
+    val expert: Expert,
 ) : BaseTimeEntity()

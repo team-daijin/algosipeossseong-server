@@ -21,12 +21,12 @@ class TokenServiceImpl(
     private val properties: JwtProperties,
     private val refreshTokenRepository: RefreshTokenRepository
 ): TokenService {
-    override fun generateAccessToken(memberId: Long): String {
-        return generateToken(memberId, TokenType.ACCESS_TOKEN, properties.accessExpiration)
+    override fun generateAccessToken(id: Long): String {
+        return generateToken(id, TokenType.ACCESS_TOKEN, properties.accessExpiration)
     }
 
-    override fun generateRefreshToken(memberId: Long): String {
-        val refreshToken = generateToken(memberId, TokenType.REFRESH_TOKEN, properties.refreshExpiration)
+    override fun generateRefreshToken(id: Long): String {
+        val refreshToken = generateToken(id, TokenType.REFRESH_TOKEN, properties.refreshExpiration)
         refreshTokenRepository.save(
             RefreshToken(
                 token = refreshToken,
@@ -45,12 +45,12 @@ class TokenServiceImpl(
     }
 
     override fun extractIdFromToken(token: String): String {
-        return extractAllClaims(token)["memberId"].toString()
+        return extractAllClaims(token)["id"].toString()
     }
 
-    private fun generateToken(memberId: Long, tokenType: TokenType, time: Long): String {
+    private fun generateToken(id: Long, tokenType: TokenType, time: Long): String {
         val claims = Jwts.claims().apply {
-            this["memberId"] = memberId
+            this["id"] = id
             this["type"] = tokenType.value
         }
 

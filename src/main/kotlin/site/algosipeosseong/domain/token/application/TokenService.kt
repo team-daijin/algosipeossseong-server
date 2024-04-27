@@ -1,9 +1,9 @@
 package site.algosipeosseong.domain.token.application
 
 interface TokenService {
-    fun generateAccessToken(memberId: Long): String
+    fun generateAccessToken(id: Long): String
 
-    fun generateRefreshToken(memberId: Long): String
+    fun generateRefreshToken(id: Long): String
 
     fun getTokenFromHeader(header: String?): String?
 

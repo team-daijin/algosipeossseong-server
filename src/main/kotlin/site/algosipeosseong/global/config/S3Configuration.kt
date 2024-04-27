@@ -13,11 +13,11 @@ import site.algosipeosseong.global.config.property.AwsProperties
 class S3Configuration(
     private val awsProperties: AwsProperties
 ) {
-    @Value("\${spring.cloud.aws.region.static}")
+    @Value("\${cloud.aws.region.static}")
     private val region: String? = null
 
     @Bean
-    fun amazonS3Client(): AmazonS3 {
+    fun amazonS3C(): AmazonS3 {
         return AmazonS3ClientBuilder.standard()
             .withRegion(region)
             .withCredentials(

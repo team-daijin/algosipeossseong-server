@@ -1,7 +1,76 @@
 spring:
+  profiles:
+    active: local
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
   jpa:
     database: mysql
-    database-platform: org.hibernate.dialect.MySQLDialect
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+    generate-ddl: true
+    hibernate:
+      ddl-auto: validate
+
+  datasource:
+    url: jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_NAME}?useSSL=false&allowPublicKeyRetrieval=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
+  data:
+    redis:
+      host: ${REDIS_HOST}
+      port: ${REDIS_PORT}
+      password: ${REDIS_PASSWORD}
+
+cloud:
+  aws:
+    credentials:
+      secret-key: ${AWS_SECRET_KEY}
+      access-key: ${AWS_ACCESS_KEY}
+    region:
+      static: ${AWS_REGION}
+    s3:
+      bucket: ${AWS_S3_BUCKET}
+
+oauth:
+  google:
+    base-url: ${OAUTH_GOOGLE_BASE_URL}
+    client-id: ${OAUTH_GOOGLE_CLIENT_ID}
+    client-secret: ${OAUTH_GOOGLE_CLIENT_SECRET}
+    redirect-uri: ${OAUTH_GOOGLE_REDIRECT_URI}
+
+jwt:
+  access-token-key: ${JWT_ACCESS_KEY}
+  refresh-token-key: ${JWT_REFRESH_KEY}
+  access-expiration: ${JWT_ACCESS_EXP}
+  refresh-expiration: ${JWT_REFRESH_EXP}
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+logging:
+  level:
+    org:
+      springframework:
+        security:
+          DEBUG
+---
+
+spring:
+  config:
+    activate:
+      on-profile: local
+  jpa:
     properties:
       hibernate:
         format_sql: true
@@ -11,7 +80,7 @@ spring:
       ddl-auto: update
 
   datasource:
-    url: jdbc:mysql://localhost:3306/algosipeosseong
+    url: jdbc:mysql://localhost:3306/algosipeosseong?useSSL=false&allowPublicKeyRetrieval=true
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: daijin
@@ -22,9 +91,4 @@ spring:
       port: 6379
       password: daijin
 
-logging:
-  level:
-    org:
-      springframework:
-        security:
-          DEBUG
+

@@ -1,9 +1,9 @@
 package site.algosipeosseong.global.security
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import jakarta.servlet.http.HttpServletRequest
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpMethod
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
@@ -38,6 +38,8 @@ class SecurityConfiguration(
             it
                 .requestMatchers(HttpMethod.POST, "/card").hasRole(Role.EXPERT.name)
                 .requestMatchers(HttpMethod.POST, "/file/upload").hasRole(Role.EXPERT.name)
+                .requestMatchers(HttpMethod.POST, "/banner").hasRole(Role.EXPERT.name)
+                .requestMatchers(HttpMethod.POST, "/clinic/register").hasRole(Role.EXPERT.name)
                 .anyRequest().permitAll()
         }
 
@@ -63,7 +65,7 @@ class SecurityConfiguration(
         val configuration = CorsConfiguration().also {
             it.allowedOrigins = listOf("*")
             it.allowedMethods = listOf(HttpMethod.POST.name(), HttpMethod.GET.name(), HttpMethod.PUT.name(), HttpMethod.DELETE.name())
-            it.allowedHeaders = listOf("Access-Control-Allow-Origin", "Content-Type", "Authorization")
+            it.allowedHeaders = listOf(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, HttpHeaders.CONTENT_TYPE, HttpHeaders.AUTHORIZATION)
         }
         return UrlBasedCorsConfigurationSource().also {
             it.registerCorsConfiguration("/**", configuration)

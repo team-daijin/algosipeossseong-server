@@ -18,7 +18,11 @@ class QueryCardListUseCase(
                 CardCategoryListResponse(
                     category = category.value,
                     cards = card.stream().map {
-                        CardSimpleResponse(it.thumbnail, it.category.value, it.title)
+                        CardSimpleResponse(
+                            id = it.id!!,
+                            thumbnail = it.thumbnail,
+                            category = it.category.value,
+                            title =  it.title)
                     }.toList()
                 )
             )

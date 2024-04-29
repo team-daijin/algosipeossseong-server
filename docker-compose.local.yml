@@ -9,7 +9,6 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: daijin
       MYSQL_DATABASE: algosipeosseong
-      MYSQL_PASSWORD: daijin
 
   redis:
     image: redis:7.0-alpine

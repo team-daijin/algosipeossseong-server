@@ -8,6 +8,8 @@ data class Expert(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long,
 
+    val name: String,
+
     val job: String,
 
     @OneToOne

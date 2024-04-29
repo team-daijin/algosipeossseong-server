@@ -16,6 +16,7 @@ repositories {
 dependencies {
     implementation(libs.bundles.kotlin)
     implementation(libs.bundles.spring)
+    implementation(libs.hibernate.spatial)
     implementation(libs.bundles.jjwt.impl)
     implementation(libs.bundles.jjwt.runtime)
     implementation(libs.connector.mysql)

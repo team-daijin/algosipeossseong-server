@@ -8,6 +8,7 @@ kotest = "5.5.4"
 mysql = "8.2.0"
 jjwt = "0.11.5"
 aws-sdk = "1.12.704"
+hibernate = "6.5.0.Final"
 
 [plugins]
 spring-boot = { id = "org.springframework.boot", version.ref = "spring-boot" }
@@ -23,6 +24,8 @@ spring-web = { module = "org.springframework.boot:spring-boot-starter-web" }
 spring-security = { module = "org.springframework.boot:spring-boot-starter-security" }
 spring-validation = { module = "org.springframework.boot:spring-boot-starter-validation"  }
 spring-data-jpa = { module = "org.springframework.boot:spring-boot-starter-data-jpa" }
+
+hibernate-spatial = { module = "org.hibernate.orm:hibernate-spatial", version.ref = "hibernate" }
 
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib-jdk8" }
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect" }

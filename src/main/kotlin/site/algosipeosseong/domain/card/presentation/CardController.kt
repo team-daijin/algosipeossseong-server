@@ -1,5 +1,6 @@
 package site.algosipeosseong.domain.card.presentation
 
+import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import site.algosipeosseong.domain.card.application.CreateCardUseCase
@@ -24,7 +25,7 @@ class CardController(
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     fun createCard(
-        @RequestBody request: CreateCardRequest,
+        @RequestBody @Valid request: CreateCardRequest,
         @AuthenticatedPrincipalId userId: Long
     ) {
         return createCardUseCase.execute(request, userId)
@@ -36,7 +37,7 @@ class CardController(
         return queryCardListUseCase.execute()
     }
 
-    @GetMapping("/{category}")
+    @GetMapping("/category/{category}")
     fun getCardListByCategory(
         @PathVariable(name = "category") category: Category
     ): List<CardSimpleResponse> {

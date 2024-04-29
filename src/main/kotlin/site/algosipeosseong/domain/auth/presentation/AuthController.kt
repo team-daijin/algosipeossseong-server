@@ -1,5 +1,6 @@
 package site.algosipeosseong.domain.auth.presentation
 
+import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -18,7 +19,7 @@ class AuthController(
     @PostMapping("/login")
     @ResponseStatus(HttpStatus.OK)
     fun login(
-        @RequestBody request: LoginRequest
+        @RequestBody @Valid request: LoginRequest
     ): TokenResponse {
         return loginUseCase.execute(request)
     }

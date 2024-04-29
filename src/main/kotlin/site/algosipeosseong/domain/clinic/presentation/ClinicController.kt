@@ -1,5 +1,6 @@
 package site.algosipeosseong.domain.clinic.presentation
 
+import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
@@ -23,7 +24,7 @@ class ClinicController(
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
     fun registerClinic(
-        @RequestBody request: RegisterClinicRequest
+        @RequestBody @Valid request: RegisterClinicRequest
     ) {
         registerClinicUseCase.execute(request)
     }
@@ -32,7 +33,7 @@ class ClinicController(
     @ResponseStatus(HttpStatus.OK)
     fun getClinicsByRadius(
         @RequestParam(required = true) radius: Int,
-        @RequestBody request :ClinicListRadiusRequest
+        @RequestBody @Valid request :ClinicListRadiusRequest
     ): List<ClinicSimpleResponse> {
         return clinicListRadiusUseCase.execute(request, radius)
     }

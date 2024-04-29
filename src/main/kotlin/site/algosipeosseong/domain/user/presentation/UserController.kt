@@ -1,5 +1,6 @@
 package site.algosipeosseong.domain.user.presentation
 
+import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -17,7 +18,7 @@ class UserController(
     @PostMapping("/signup")
     @ResponseStatus(HttpStatus.CREATED)
     fun signUp(
-        @RequestBody request: SignUpUserRequest
+        @RequestBody @Valid request: SignUpUserRequest
     ) {
         signUpUserUseCase.execute(request)
     }

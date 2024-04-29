@@ -1,5 +1,6 @@
 package site.algosipeosseong.domain.banner.presentation
 
+import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
@@ -21,7 +22,7 @@ class BannerController(
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     fun registerBanner(
-        @RequestBody request: RegisterBannerRequest
+        @RequestBody @Valid request: RegisterBannerRequest
     ) {
         registerBannerUseCase.execute(request)
     }

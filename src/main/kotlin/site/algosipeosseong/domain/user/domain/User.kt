@@ -15,7 +15,7 @@ data class User(
     val email: String,
 
     @Embedded
-    var password: Password,
+    var password: Password? = null,
 
     @Embedded
     var privacy: Privacy? = null,

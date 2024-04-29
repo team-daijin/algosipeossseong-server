@@ -6,5 +6,7 @@ import site.algosipeosseong.domain.user.domain.User
 
 @Repository
 interface UserRepository : JpaRepository<User, Long> {
+    fun findByEmail(email: String): User?
+
     fun existsByEmail(email: String): Boolean
 }

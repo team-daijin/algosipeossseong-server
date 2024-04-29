@@ -6,4 +6,5 @@ import site.algosipeosseong.domain.expert.domain.Expert
 
 @Repository
 interface ExpertRepository : JpaRepository<Expert, Long> {
+    fun findByUser_Id(userId: Long): Expert?
 }

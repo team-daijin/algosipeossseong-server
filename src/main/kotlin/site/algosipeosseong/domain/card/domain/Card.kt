@@ -15,7 +15,8 @@ data class Card(
 
     val title: String,
 
-    @Lob
+    val subTitle: String,
+
     val content: String,
 
     @Enumerated(value = EnumType.STRING)
@@ -24,4 +25,5 @@ data class Card(
     @ManyToOne
     @JoinColumn(name = "expert_id")
     val expert: Expert,
-) : BaseTimeEntity()
+) : BaseTimeEntity() {
+}

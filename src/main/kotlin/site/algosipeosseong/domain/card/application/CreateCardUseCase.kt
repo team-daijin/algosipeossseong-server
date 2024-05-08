@@ -23,6 +23,7 @@ class CreateCardUseCase(
             Card(
                 thumbnail = request.thumbnail,
                 title = request.title,
+                subTitle = request.subTitle,
                 content = request.content,
                 category = request.category,
                 expert = expert

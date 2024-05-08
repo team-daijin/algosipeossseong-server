@@ -8,6 +8,8 @@ data class CreateCardRequest(
     val thumbnail: String,
     @field:NotBlank(message = "필수 값입니다")
     val title: String,
+    @field:NotBlank(message = "필수 값입니니다.")
+    val subTitle: String,
     @field:NotBlank(message = "필수 값입니다")
     val content: String,
     @field:NotNull(message = "필수 값입니다.")

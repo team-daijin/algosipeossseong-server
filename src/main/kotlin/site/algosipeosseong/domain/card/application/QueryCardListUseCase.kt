@@ -5,6 +5,7 @@ import site.algosipeosseong.domain.card.application.dto.response.CardCategoryLis
 import site.algosipeosseong.domain.card.application.dto.response.CardSimpleResponse
 import site.algosipeosseong.domain.card.domain.constant.Category
 import site.algosipeosseong.domain.card.infrastructure.CardRepository
+import site.algosipeosseong.global.util.DateUtil
 
 @Component
 class QueryCardListUseCase(
@@ -22,7 +23,11 @@ class QueryCardListUseCase(
                             id = it.id!!,
                             thumbnail = it.thumbnail,
                             category = it.category.value,
-                            title =  it.title)
+                            expert = it.expert.name,
+                            date = DateUtil.dateToString(it.createdDate!!),
+                            title = it.title,
+                            subTitle = it.subTitle
+                        )
                     }.toList()
                 )
             )

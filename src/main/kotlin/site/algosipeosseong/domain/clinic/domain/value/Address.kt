@@ -9,6 +9,10 @@ data class Address(
     val streetAddress: String,
     val zipCode: Short
 ) : Serializable {
+
+    fun getAddressDetails(): String {
+        return "$streetAddress$detailAddress($zipCode)"
+    }
     companion object {
         fun of(
             detailAddress: String,

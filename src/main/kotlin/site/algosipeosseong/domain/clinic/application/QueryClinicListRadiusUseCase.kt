@@ -3,7 +3,6 @@ package site.algosipeosseong.domain.clinic.application
 import org.springframework.stereotype.Component
 import site.algosipeosseong.domain.clinic.application.dto.request.ClinicListRadiusRequest
 import site.algosipeosseong.domain.clinic.application.dto.response.ClinicSimpleResponse
-import site.algosipeosseong.domain.clinic.domain.Clinic
 import site.algosipeosseong.domain.clinic.infrastructure.ClinicRepository
 import site.algosipeosseong.global.util.GeoUtil
 
@@ -22,7 +21,7 @@ class QueryClinicListRadiusUseCase(
                 id = it.id!!,
                 image = it.image,
                 name = it.name,
-                address = it.address,
+                address = it.address.getAddressDetails(),
                 contact = it.contact,
                 description = it.description
             )

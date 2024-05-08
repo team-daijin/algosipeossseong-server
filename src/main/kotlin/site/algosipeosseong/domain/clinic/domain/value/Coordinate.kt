@@ -1,4 +1,4 @@
-package site.algosipeosseong.domain.clinic.domain
+package site.algosipeosseong.domain.clinic.domain.value
 
 import jakarta.persistence.Embeddable
 import org.locationtech.jts.geom.Point

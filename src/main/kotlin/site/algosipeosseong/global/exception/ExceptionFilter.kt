@@ -27,6 +27,7 @@ class ExceptionFilter(
                     e.printStackTrace()
                     setErrorResponse(e.cause as AlgosipeosseongException, response)
                 } else -> {
+                    e.printStackTrace()
                     setErrorResponse(InternalServerException, response)
                 }
             }

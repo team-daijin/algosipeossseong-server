@@ -1,6 +1,5 @@
 package site.algosipeosseong.domain.file.infrastructure
 
-import com.amazonaws.regions.ServiceAbbreviations.Directory
 import com.amazonaws.services.s3.AmazonS3
 import com.amazonaws.services.s3.model.CannedAccessControlList
 import com.amazonaws.services.s3.model.ObjectMetadata
@@ -21,7 +20,7 @@ class S3Service(
     override fun upload(file: MultipartFile, path: String): String {
         if (file.isEmpty) throw RuntimeException()
 
-        val fileName: String = createFileName(path, file.originalFilename!!)
+        val fileName: String = createFileName(path)
         try {
             val request = PutObjectRequest(
                 bucket,
@@ -38,8 +37,8 @@ class S3Service(
         return amazonS3.getUrl(bucket, fileName).toString()
     }
 
-    private fun createFileName(path: String, originalName: String): String {
-        return (path + "/" + UUID.randomUUID())+ "-" + originalName
+    private fun createFileName(path: String): String {
+        return path + "/" + UUID.randomUUID()
     }
 
     private fun getObjectMetadata(file: MultipartFile): ObjectMetadata {

@@ -22,7 +22,7 @@ data class Card(
     @Enumerated(value = EnumType.STRING)
     val category: Category,
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "expert_id")
     val expert: Expert,
 ) : BaseTimeEntity() {

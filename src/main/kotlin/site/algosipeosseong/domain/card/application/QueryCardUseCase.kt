@@ -10,8 +10,7 @@ class QueryCardUseCase(
     private val cardRepository: CardRepository
 ) {
     fun execute(id: Long): CardResponse {
-        val card = cardRepository.findByIdOrNull(id) ?: throw RuntimeException()
-
+        val card = cardRepository.findWithExpertById(id) ?: throw RuntimeException()
         return CardResponse(
             category = card.category.value,
             thumbnail = card.thumbnail,

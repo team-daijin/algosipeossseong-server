@@ -13,9 +13,8 @@ interface ClinicRepository : JpaRepository<Clinic, Long> {
 
     @Query(
         """  
-        SELECT co
-        FROM Clinic AS co  
-        WHERE st_contains(st_buffer(:center, :radius), co.coordinate.point)
+        SELECT clinic FROM Clinic AS clinic 
+        WHERE st_contains(st_buffer(:center, :radius), clinic.coordinate.point)
         """
     )
     fun findAllWithInCircleArea(

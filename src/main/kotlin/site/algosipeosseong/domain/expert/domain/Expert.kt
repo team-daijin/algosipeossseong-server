@@ -4,15 +4,24 @@ import jakarta.persistence.*
 import site.algosipeosseong.domain.user.domain.User
 
 @Entity
-data class Expert(
+class Expert(
+    id: Long,
+    name: String,
+    job: String,
+    user: User
+) {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long,
+    var id: Long = id
+        protected set
 
-    val name: String,
+    var name: String = name
+        protected set
 
-    val job: String,
+    var job: String = job
+        protected set
 
     @OneToOne
     @JoinColumn(name = "user_id")
-    val user: User,
-)
+    var user: User = user
+        protected set
+}

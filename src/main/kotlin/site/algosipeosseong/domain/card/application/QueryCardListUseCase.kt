@@ -23,7 +23,7 @@ class QueryCardListUseCase(
                             id = it.id!!,
                             thumbnail = it.thumbnail,
                             category = it.category.value,
-                            expert = it.expert.name,
+                            expert = it.expert!!.name,
                             date = DateUtil.dateToString(it.createdDate!!),
                             title = it.title,
                             subTitle = it.subTitle

@@ -1,6 +1,5 @@
 package site.algosipeosseong.domain.card.application
 
-import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Component
 import site.algosipeosseong.domain.card.application.dto.response.CardResponse
 import site.algosipeosseong.domain.card.infrastructure.CardRepository
@@ -15,7 +14,7 @@ class QueryCardUseCase(
             category = card.category.value,
             thumbnail = card.thumbnail,
             title = card.title,
-            expert =  card.expert.name,
+            expert =  card.expert!!.name,
             content = card.content
         )
     }

@@ -16,10 +16,7 @@ data class RegisterClinicRequest(
     val detailAddress: String,
     @field:NotBlank(message = "필수 값입니다")
     val streetAddress: String,
-    @field:NotBlank(message = "필수 값입니다")
-    val zipCode: Short,
-    @field:NotBlank(message = "필수 값입니다")
+    val zipCode: Int,
     val latitude: Double,
-    @field:NotBlank(message = "필수 값입니다")
     val longitude: Double
 )

@@ -1,6 +1,5 @@
 package site.algosipeosseong.global.exception.error
 
-import org.springframework.boot.context.properties.bind.BindResult
 import org.springframework.validation.BindingResult
 
 data class ErrorResponse(

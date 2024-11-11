@@ -7,7 +7,7 @@ import java.io.Serializable
 data class Address(
     val detailAddress: String,
     val streetAddress: String,
-    val zipCode: Short
+    val zipCode: Int
 ) : Serializable {
 
     fun getAddressDetails(): String {
@@ -17,7 +17,7 @@ data class Address(
         fun of(
             detailAddress: String,
             streetAddress: String,
-            zipCode: Short
+            zipCode: Int
         ): Address {
             return Address(
                 detailAddress = detailAddress,
